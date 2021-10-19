@@ -3,12 +3,17 @@ CpZen is an Online Integrated Development Environment (IDE) for competitive prog
 
 ![Build](https://img.shields.io/badge/build-passing-lightgreen.svg)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
-![IDE](https://img.shields.io/badge/IDE-Visual%20Studio%20Code-blue)
+<!---![IDE](https://img.shields.io/badge/IDE-Visual%20Studio%20Code-blue)-->
 ![License](https://img.shields.io/badge/license-MIT-orange.svg)
-![Framework](https://img.shields.io/badge/Web%20Framework-Flask-red)
+<!--![Framework](https://img.shields.io/badge/Web%20Framework-Flask-red)-->
 ![Grade](https://img.shields.io/badge/Grade-Not%20Yet%20Graded-lightgrey)
 
-
+## Built With
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ## Team Members:
 * Syed Rifat Raiyan- 180041205
 * Ishrak Hossain- 180041218
