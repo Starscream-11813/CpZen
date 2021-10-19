@@ -1,0 +1,241 @@
+{%extends "base.html"%}
+
+{%block app_content%}
+
+
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/base16/solarized-dark.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.6.0/dist/highlightjs-line-numbers.min.js"></script>
+
+
+
+
+<script>
+	hljs.initHighlighting();
+</script>
+
+
+<Style>
+	textarea {
+		position: absolute;
+		left: -100%;
+	}
+</Style>
+
+<!-- Source Code Part -->
+<div class="container"
+	style="box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);margin-top:5%;">
+	<div class="row">
+		<div class="col-md-12 right">
+			<div class="output-details">
+				<div class="output-details-info compile-status" align="left" style="margin-top:2%;">
+					<strong><i class="bi bi-code-square"></i> Source Code: </strong>
+
+					<button type="button" class="btn btn-outline-success"
+						style="float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+						id="download_button"><strong><i class="bi bi-download"></i> Download</strong></button>
+					<button type="button" class="btn btn-outline-secondary"
+						style="float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+						id="copy_button"><strong><i class="bi bi-clipboard-check"></i> Copy</strong></button>
+				</div>
+			</div>
+			<div class="output-io" class="p-0 my-3 .border-warning"
+				style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:2%;">
+				<div class="output-error-box">
+					<pre class="error-message" style="padding-left:3%"
+						id="saved_code"><code><strong>{{content}}</strong></code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+	{%if content%}
+
+	<script>
+		function copyFunction() {
+			const copyText = document.getElementById("saved_code").textContent;
+			const textArea = document.createElement('textarea');
+			textArea.textContent = copyText;
+			document.body.append(textArea);
+			textArea.select();
+			document.execCommand("copy");
+		}
+
+		document.getElementById('copy_button').addEventListener('click', copyFunction);
+
+
+		function saveTextAsFile() {
+			var textToWrite = document.getElementById('saved_code').innerText;
+			var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
+			var fileNameToSaveAs = "saved_code.txt";
+
+			var downloadLink = document.createElement("a");
+			downloadLink.download = fileNameToSaveAs;
+			downloadLink.innerHTML = "Download File";
+			if (window.webkitURL != null) {
+				// Chrome allows the link to be clicked
+				// without actually adding it to the DOM.
+				downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+			}
+			else {
+				// Firefox requires the link to be added to the DOM
+				// before it can be clicked.
+				downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+				downloadLink.onclick = function () {
+					document.body.removeChild(downloadLink);
+				};
+				downloadLink.style.display = "none";
+				document.body.appendChild(downloadLink);
+			}
+
+			downloadLink.click();
+		}
+
+		var button = document.getElementById('download_button');
+		button.addEventListener('click', saveTextAsFile);
+	</script>
+
+	{%endif%}
+</div>
+
+<!-- Input Part -->
+<br>
+<div class="card mx-auto"
+	style="width: 91%; border: #b1c451 1px solid; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+	<div class="card-header" style="background-color: #b1c451;">
+		<strong><i class="bi bi-inbox-fill"></i> Standard Input: </strong>
+
+	</div>
+
+	<div class="card-body">
+		<div>
+			<button type="button" class="btn btn-outline-secondary"
+				style="float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+				id="copy_button1"><strong><i class="bi bi-clipboard-check"></i> Copy</strong></button>
+		</div>
+
+		<div style="border: 1px solid black; border-radius: 0.2em;">
+			<pre id="saved_input">{{temp_input}}</pre>
+		</div>
+
+	</div>
+
+	{%if temp_input%}
+
+	<script>
+		function copyFunction() {
+			const copyText = document.getElementById("saved_input").textContent;
+			const textArea = document.createElement('textarea');
+			textArea.textContent = copyText;
+			document.body.append(textArea);
+			textArea.select();
+			document.execCommand("copy");
+		}
+
+		document.getElementById('copy_button1').addEventListener('click', copyFunction);
+	</script>
+
+	{%endif%}
+</div>
+
+
+<!-- Output Box -->
+
+<br>
+<div class="card mx-auto"
+	style="width: 91%; border: #b1c451 1px solid; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+	<div class="card-header" style="background-color: #b1c451;">
+		<strong><i class="bi bi-box-arrow-right"></i> Standard Output: </strong>
+
+	</div>
+
+	<div class="card-body">
+
+
+		<div class="row">
+			<div class="col-3">
+				<div class="output-details-info run-status">
+					{%if result['statusCode'] == 200 %}
+					<div class="key " style="color:#040404; font-family: 'Product Sans';">Run Status:
+						{{result['statusCode']}}</div>
+					{%else%}
+					<div class="key" style="color:#040404; font-family: 'Product Sans';">Run Status:
+						{{result['statusCode']}}</div>
+					{%endif%}
+				</div>
+			</div>
+
+			<div class="col-3">
+				<div class="output-details-info compile-status">
+					<div class="key" style="font-family: 'Product Sans';">Compile Status:
+						{% if result['statusCode'] == 200 %}
+						Build Successful! ✅
+						{%else%}
+						Build Failed! 😞
+						{%endif%}
+					</div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="output-details-info time-sec">
+					{% if result['statusCode'] == 200 %}
+					<div class="key" style="font-family: 'Product Sans';">Time (sec): {{result['cpuTime']}}</div>
+					{%endif%}
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="output-details-info memory-kb">
+					{% if result['statusCode'] == 200 %}
+					<div class="key" style="font-family: 'Product Sans';">Memory (KB): {{result['memory']}}
+					</div>
+					{%endif%}
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<button type="button" class="btn btn-outline-secondary"
+				style="float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+				id="copy_button_output"><strong><i class="bi bi-clipboard-check"></i> Copy</strong></button>
+		</div>
+
+
+		<div style="border: 1px solid black; border-radius: 0.2em;">
+			{% if result['statusCode'] != 200 %}
+			<div class="output-error-box">
+				<div class="error-key" style="color:#040404;"><b>Compilation error</b></div>
+				<pre class="error-message" style="background-color:#F96467;padding-left:3%">{{result['error']}}</pre>
+			</div>
+			{%endif%}
+			{% if result['statusCode'] == 200 %}
+			<div class="output-io-info output-o-info">
+				{%if result['output']%}
+				<pre class="output-text output-o" id="output_text">{{result['output']}}</pre>
+				{%else%}
+				<pre class="output-text output-o">
+					Standard output is empty</pre>
+				{%endif%}
+			</div>
+			{%endif%}
+		</div>
+
+	</div>
+	{%if result['output']%}
+	<script>
+		function copyFunction() {
+			const copyText = document.getElementById("output_text").textContent;
+			const textArea = document.createElement('textarea');
+			textArea.textContent = copyText;
+			document.body.append(textArea);
+			textArea.select();
+			document.execCommand("copy");
+		}
+
+		document.getElementById('copy_button_output').addEventListener('click', copyFunction);
+	</script>
+	{%endif%}
+</div>
+
+{%endblock%}

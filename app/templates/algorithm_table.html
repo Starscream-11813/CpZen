@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{% if algorithms %}
+
+    {% set count_string = [] %}
+    {% set count_graph = [] %}
+    {% set count_number_theory = [] %}
+    {% set count_data_structure = [] %}
+    {% set count_greedy = [] %}
+    {% set count_geometry = [] %}
+    {% set count_game_theory = [] %}
+    {% set count_dp = [] %}
+    {% set count_linear_algebra = [] %}
+    {% set count_combinatorics = [] %}
+    {% set count_miscellaneous = [] %}
+
+    {% for item in algorithms %}
+        {% set splitstring = item|string() %}
+        {% set separated = splitstring.split('-----') %}
+        
+        {% if separated[1] == "1" %}
+            {% set __ = count_string.append(separated[5] | int) %}
+        {% elif separated[1] == "2" %}
+            {% set __ = count_graph.append(separated[5] | int) %}
+        {% elif separated[1] == "3" %}
+            {% set __ = count_number_theory.append(separated[5] | int) %}
+        {% elif separated[1] == "4" %}
+            {% set __ = count_data_structure.append(separated[5] | int) %}
+        {% elif separated[1] == "5" %}
+            {% set __ = count_greedy.append(separated[5] | int) %}
+        {% elif separated[1] == "6" %}
+            {% set __ = count_geometry.append(separated[5] | int) %}}
+        {% elif separated[1] == "7" %}
+            {% set __ = count_game_theory.append(separated[5] | int) %}
+        {% elif separated[1] == "8" %}
+            {% set __ = count_dp.append(separated[5] | int) %}
+        {% elif separated[1] == "9" %}
+            {% set __ = count_linear_algebra.append(separated[5] | int) %}
+        {% elif separated[1] == "10" %}
+            {% set __ = count_combinatorics.append(separated[5] | int) %}
+        {% elif separated[1] == "11" %}
+            {% set __ = count_miscellaneous.append(separated[5] | int) %} 
+        {% endif %}
+    {% endfor %}
+
+   
+
+    <div class="radar chart" style="font-family: 'Product Sans'; display: flex; justify-content: center;">
+        <style>
+            .chartBox {
+                width: 620px;
+                padding: 20px;
+                border-radius: 20px;
+                border: solid 3px rgba(255, 26, 104, 1);
+                background: white;
+            }
+        </style>
+    
+        <div class="chartBox" style="position: relative; display: flex; justify-content: center;">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            // setup 
+            const data = {
+                labels: ['', 'String', 'Graph', 'Number Theory', 'Data Structure', 'Greedy', 'Geometry', 'Game Theory', 'Dynamic Programming', 'Linear Algebra', 'Combinatorics', 'Miscellaneous'],
+                datasets: [{
+                    label: 'Algorithm Coverage - Radar Chart',
+                    data: [0, {{count_string|sum()}}, {{count_graph|sum()}}, {{count_number_theory|sum()}}, {{count_data_structure|sum()}}, {{count_greedy|sum()}}, {{count_geometry|sum()}}, {{count_game_theory|sum()}}, {{count_dp|sum()}}, {{count_linear_algebra|sum()}}, {{count_combinatorics|sum()}}, {{count_miscellaneous|sum()}}],
+                    backgroundColor: 'rgba(177, 196, 81, 0.5)',
+                    borderColor: 'rgba(177, 196, 81, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            // config 
+            const config = {
+                type: 'radar',
+                data,
+                options: {
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'black'
+                            },
+                            grid: {
+                                color: '#565e64'
+                            },
+                            pointLabels: {
+                                color: 'black'
+                            },
+                            ticks: {
+                                color: 'black'
+                            }
+                        }
+                    }
+                }
+            };
+
+            // render init block
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        </script>
+
+    </div>
+
+{% endif %}
+
+
+
+<div id="Algorithm Table" class="container" style="font-family: Product Sans;">
+
+    <a style="display: flex; justify-content: right; position: relative;" href="#" data-toggle="modal" data-target="#add_algo"><strong class="bi bi-plus-square-fill btn btn-outline-primary" style="text-decoration: none;"> Add</strong></a>
+
+    <!-- Algorithm Adding Modals -->
+    <div id="add_algo" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a new Algorithm to your profile</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        {{form.hidden_tag()}}
+                        <div class="input-group mb-5">
+                            <div class="input-group-prepend">
+                                <!-- <span class="input-group-text py-3">
+                                    <i class="bi bi-person-circle"></i>
+                                </span> -->
+                            </div>
+                            <!-- <input type="text" class="form-control py-2"> -->
+                            {{form.algo_name(class="form-control py-2", size=58.9, placeholder="Enter Algorithm Name...", style="border-radius: 1px;")}}
+                        </div>
+        
+                        <div class="input-group mb-5">
+                            <div class="input-group-prepend">
+                                <!-- <span class="input-group-text py-3">
+                                    <i class="bi bi-file-earmark-lock2"></i>
+                                </span> -->
+                            </div>
+                            <!-- <input type="text" class="form-control py-2"> -->
+                            {{form.algo_resources(class="form-control py-2", size=58.9, placeholder="Enter Resource Links or Details...")}}
+                            
+                        </div>
+                        
+                        <div class="input-group mb-5">
+                            <div class="input-group-prepend">
+                                <!-- <span class="input-group-text py-3">
+                                    <i class="bi bi-file-earmark-lock2"></i>
+                                </span> -->
+                            </div>
+                            <!-- <input type="text" class="form-control py-2"> -->
+                            {{form.algo_problems(class="form-control py-2", size=58.9, placeholder="Enter Algorithm Problem Links or Details...")}}
+                            
+                        </div>
+        
+                        <div class="input-group mb-5" style="display: flex; justify-content: center;">
+                            <div class="input-group-prepend">
+                                <!-- <span class="input-group-text py-3">
+                                    <i class="bi bi-file-earmark-lock2"></i>
+                                </span> -->
+                            </div>
+                            <!-- <input type="text" class="form-control py-2"> -->
+                            <p style="color: grey;">Algorithm Proficiency: </p>
+                            {{form.algo_proficiency(style="display: inline")}}
+                        </div>
+        
+                        <div class="flex-container2" style="display: flex; justify-content: center;">
+                            <p style="color: grey;">Algorithm Type: </p>
+                            {{form.algo_type(style="display: inline")}}
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            {{form.submit(href="{{url_for('algorithm_list')}}", class="btn btn-success ml-auto", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:200px;")}}
+                        </div>
+                     
+                        
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card rounded my-3 border-success mb-3 table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">Algorithm ID</th>
+                    <th scope="col" style="text-align: center">Algorithm Type</th>
+                    <th scope="col" style="text-align: center">Algorithm Name</th>
+                    <th scope="col" style="text-align: center">Algorithm Resources</th>
+                    <th scope="col" style="text-align: center">Algorithm Related Problems</th>
+                    <th scope="col" style="text-align: center">Proficiency</th>
+                    <th scope="col" style="text-align: center">Action</th>
+                </tr>
+            </thead>
+            {% for item in algorithms %}
+            {%if algorithms%}
+            {% set splitstring = item|string() %}
+            {% set separated = splitstring.split('-----') %}
+            <tbody>
+                <tr>
+                    <td style="text-align: center;"><a href="#" data-toggle="modal" data-target="#edit{{separated[0]}}">{{ separated[0] }}</a></td>
+                    
+                    <!-- <td>{{ separated[1] }}</td> -->
+                    <td style="text-align: center;">
+                        {% if separated[1] == "1" %}
+                        String
+
+                        {% elif separated[1] == "2" %}
+                        Graph
+
+                        {% elif separated[1] == "3" %}
+                        Number Theory
+
+                        {% elif separated[1] == "4" %}
+                        Data Structure
+
+                        {% elif separated[1] == "5" %}
+                        Greedy
+
+                        {% elif separated[1] == "6" %}
+                        Geometry
+
+                        {% elif separated[1] == "7" %}
+                        Game Theory
+
+                        {% elif separated[1] == "8" %}
+                        Dynamic Programming
+
+                        {% elif separated[1] == "9" %}
+                        Linear Algebra
+
+                        {% elif separated[1] == "10" %}
+                        Combinatorics
+
+                        {% elif separated[1] == "11" %}
+                        Miscellaneous
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center;">{{ separated[2] }}</td>
+                    <td>
+                        <pre> {{ separated[3] }}</pre>
+                    </td>
+                    <td>
+                        <pre> {{ separated[4] }}</pre>
+                    </td>
+
+                    {% if separated[5] == "1" %}
+                    <td style="text-align: center;"><span class="badge bg-primary">Novice</span></td>
+                    {% elif separated[5] == "2" %}
+                    <td style="text-align: center;"><span class="badge bg-secondary">Somewhat Good</span></td>
+                    {% elif separated[5] == "3" %}
+                    <td style="text-align: center;"><span class="badge bg-success">Good</span></td>
+                    {% elif separated[5] == "4" %}
+                    <td style="text-align: center;"><span class="badge bg-danger">Expert</span></td>
+                    {% endif %}
+                    <td style="text-align: center;"><a href="/delete_algo/{{separated[0]}}" class="btn btn-outline-danger" onclick="return confirm('Do you want to delete the Algorithm?')"><i class="bi bi-trash"></i></a></td>
+                </tr>
+
+            </tbody>
+            <div id="edit{{separated[0]}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Update Information</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{url_for('edit_algo', got_id = separated[0])}}" method="POST">
+        
+                                <div class="form-group">
+                                    <label>Algorithm Name: </label>
+                                    <input type="hidden"  name="id" value="{{separated[0]}}">
+                                    <input type="text" class="form-control" name="algo_name" value="{{separated[2]}}">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label>Algorithm Resources: </label>
+                                    <textarea type="text" class="form-control" name="algo_resources" value="{{separated[3]}}">{{separated[3]}}</textarea>
+                                    
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label>Algorithm Related Problems: </label>
+                                    <textarea type="text" class="form-control" name="algo_problems" value="{{separated[4]}}">{{separated[4]}}</textarea>
+                                    
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Update</button>
+                                </div>
+        
+                            </form>
+                        </div>
+        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+
+
+            {% endif %}
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

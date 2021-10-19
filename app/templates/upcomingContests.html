@@ -1,0 +1,565 @@
+{%extends "base.html"%}
+
+{%block app_content%}
+
+<div class="bg-secondary text-center py-1" style="font-family: 'Product Sans';">
+    <span class="text-light">Hello {{ username }}! Good luck and godspeed!</span>
+</div>
+
+<!-- CodeChef Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/CodeChef.png" width="100" height="100" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">codechef.com</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "codechef.com" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        {% set level = item["contest_name"]|string() %}
+                        {% set case1 = level.find("Div 3") %}
+
+
+                        {% if case1 != -1 %}
+                        <td style="text-align: center;"><span class="badge bg-success">{{'Beginner'}}</span></td>
+                        {% else %}
+                        <td style="text-align: center;"> <span class="badge bg-primary">{{'Intermediate'}}</span></td>
+                        {% endif %}
+                    </tr>
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Codeforces Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/CodeForces.png" height="100" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">codeforces.com</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "codeforces.com" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        {% set level = item["contest_name"]|string() %}
+                        {% set case1 = level.find("Div. 1") %}
+                        {% set case2 = level.find("Div. 2") %}
+                        {% set case3 = level.find("Div. 3") %}
+
+                        {% if case1 != -1 %}
+                        <td style="text-align: center;"><span class="badge bg-warning">{{'Advanced'}}</span></td>
+                        {% elif case2 != -1 %}
+                        <td style="text-align: center;"> <span class="badge bg-primary">{{'Intermediate'}}</span></td>
+                        {% elif case3 != -1 %}
+                        <td style="text-align: center;"> <span class="badge bg-success">{{'Beginner'}}</span></td>
+                        {% else %}
+                        <td style="text-align: center;"> <span class="badge bg-primary">{{'Intermediate'}}</span></td>
+                        {% endif %}
+                    </tr>
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- Kaggle Contests -->
+<div id="kaggle" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="Kaggle-Title" class=" text-center py-5">
+        <img src="https://i.ibb.co/NLmxZVW/Kaggle-logo.png" width="259" height="100" alt="kaggle">
+    </div>
+
+    <div id="Kaggle-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">kaggle.com</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Topic</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "kaggle.com" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        <td style="text-align: center;"><span class="badge bg-info">{{'Machine Learning'}}</span></td>
+                    </tr>
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Toph Contests -->
+<div id="Toph" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/Toph.png" width="310" height="100" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">toph.co</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "toph.co" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        {% set level = item["contest_name"]|string() %}
+                        {% set case1 = level.find("Criterion") %}
+
+
+                        {% if case1 != -1 %}
+                        <td style="text-align: center;"><span class="badge bg-primary">{{'Intermediate'}}</span></td>
+                        {% else %}
+                        <td style="text-align: center;"> <span class="badge bg-warning">{{'Advanced'}}</span></td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- LightOJ Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/LightOJcropped.png" width="252" height="100" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">lightoj.com</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "lightoj.com" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        <td style="text-align: center;"> <span class="badge bg-warning">{{'Advanced'}}</span></td>
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Google Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/Google.png" width="286" height="100" alt="CodeChef">
+    </div>
+
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">codingcompetitions.withgoogle.com</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "codingcompetitions.withgoogle.com" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        {% set level = item["contest_name"]|string() %}
+                        {% set case1 = level.find("Kick Start") %}
+                        {% set case2 = level.find("Code Jam") %}
+                        {% set case3 = level.find("Hash Code") %}
+
+                        {% if case1 != -1 %}
+                        <td style="text-align: center;"><span class="badge bg-primary">{{'Intermediate'}}</span></td>
+                        {% elif case2 != -1 %}
+                        <td style="text-align: center;"> <span class="badge bg-warning">{{'Advanced'}}</span></td>
+                        {% else %}
+                        <td style="text-align: center;"> <span class="badge bg-warning">{{'Advanced'}}</span></td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- HackerEarth Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/HackerEarth2.png" width="500" height="100" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">hackerearth.com</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "hackerearth.com" %}
+
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        {% set level = item["contest_name"]|string() %}
+                        {% set case1 = level.find("Hiring") %}
+                        {% set case2 = level.find("ML") %}
+                        {% if case2 != -1 %}
+                        <td style="text-align: center;"><span class="badge bg-info">{{'Machine Learning'}}</span></td>
+                        {% elif case1 != -1 %}
+                        <td style="text-align: center;"><span class="badge bg-danger">{{'Job Recruitment'}}</span></td>
+                        {% else %}
+                        <td style="text-align: center;"> <span class="badge bg-primary">{{'Intermediate'}}</span></td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- AtCoder Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/AtCoder.png" width="150" height="150" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">atcoder.jp</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "atcoder.jp" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        {% set level = item["contest_name"]|string() %}
+                        {% set case1 = level.find("Grand") %}
+                        {% set case2 = level.find("Regular") %}
+                        {% set case3 = level.find("Beginner") %}
+
+                        {% if case1 != -1 %}
+                        <td style="text-align: center;"><span class="badge bg-warning">{{'Advanced'}}</span></td>
+                        {% elif case2 != -1 %}
+                        <td style="text-align: center;"> <span class="badge bg-primary">{{'Intermediate'}}</span></td>
+                        {% elif case3 != -1 %}
+                        <td style="text-align: center;"> <span class="badge bg-success">{{'Beginner'}}</span></td>
+                        {% else %}
+                        <td style="text-align: center;"> <span class="badge bg-warning">{{'Advanced'}}</span></td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- HackerRank Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/HackerRank.png" width="100" height="100" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">hackerrank.com</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "hackerrank.com" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        <td style="text-align: center;"> <span class="badge bg-danger">{{'Expert'}}</span></td>
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- SphereOJ Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/SPOJ.png" width="655" height="80" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">spoj.com</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "spoj.com" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        <td style="text-align: center;"> <span class="badge bg-primary">{{'Intermediate'}}</span></td>
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ProjectEuler Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/ProjectEuler.png" width="250" height="45" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">projecteuler.net</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "projecteuler.net" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        <td style="text-align: center;"> <span class="badge bg-warning">{{'Mathematical'}}</span></td>
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- EOlymp Contests -->
+<div id="CodeChef" class="flex-container bg-light py-3" style="font-family: 'Product Sans';">
+    <div id="CodeChef-Title" class=" text-center py-5">
+        <img src="static/EOlymp.png" width="100" height="100" alt="CodeChef">
+    </div>
+
+    <div id="CodeChef-Contests" class="container">
+        <div class="card-header bg-dark">
+            <span class="text-light">e-olymp.com</span>
+        </div>
+
+        <div class="card rounded my-3 border-success mb-3">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">Contest Link</th>
+                        <th scope="col" style="text-align: center">Start</th>
+                        <th scope="col" style="text-align: center">End</th>
+                        <th scope="col" style="text-align: center">Duration</th>
+                        <th scope="col" style="text-align: center">Level</th>
+                    </tr>
+                </thead>
+                {% for item in ccContests %}
+                {% if item["sitename"] == "e-olymp.com" %}
+                <tbody>
+                    <tr>
+                        <td><a href="{{ item[" link"] }}">{{ item["contest_name"] }}</a></td>
+                        <td style="text-align: center">{{ item["startTime"] }}</td>
+                        <td style="text-align: center">{{ item["endTime"] }}</td>
+                        <td style="text-align: center">{{ item["duration"] }}</td>
+                        <td style="text-align: center;"> <span class="badge bg-primary">{{'Intermediate'}}</span></td>
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,160 @@
+<html>
+	<head>
+		{{ codemirror.include_codemirror() }}
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{%if current_user.is_authenticated%}
+			<title>{{current_user.username}}-CpZen</title>
+		{%else%}
+			<title>CpZen</title>
+		{%endif%}
+		<link rel="icon" href="../static/cpicon.ico">
+		<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../addon/hint/show-hint.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		
+		<script>
+        	function toggle(id) {
+	            if (document.getElementById(id).style.display == 'none') {
+	                document.getElementById(id).style.display = 'block';
+	            } else {
+	                document.getElementById(id).style.display = 'none';
+	            }
+        	}
+        	function doDL(s){
+			    function dataUrl(data) {return "data:x-application/text," + escape(data);
+				}
+			    window.open(dataUrl(s));
+			}
+        </script>
+       	</head>
+	<body>
+		<div>
+			   <nav class="navbar  navbar-expand navbar-light-md navbar-dark justify-content-md-start" style="background-color: #b1c451;">
+				<!-- <nav class="navbar navbar-expand-md navbar-dark border border-light bg-info" style="box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"></nav> -->
+			    <div class="container">
+			      <a class="navbar-brand text-dark" href="{{url_for('index')}}"><img src="https://i.im.ge/2021/07/23/7cJCa.png" alt="cplogo" style="width: 60px; height: 40px;"> </a>
+				  <ul class="nav navbar-nav navbar-collapse">
+					<li class="nav-item"><a href="{{url_for('index')}}" style="text-decoration: none;"> <b style="font-size: 2vw; color: black; font-family: 'Product Sans Medium'; font-weight: bold;">CpZen</b> 
+					  <p style="font-size: 1vw; color: black; font-family: 'Product Sans';">for the Competitive Programmers</p></a>
+					</li>
+				  </ul>
+
+				  <div class="collapse navbar-collapse">
+				  <ul class = "nav navbar-nav navbar-left nav-pills" style="font-family: 'Product Sans';">
+			      {%if current_user.is_anonymous %}
+				  <li class="nav-item">
+			        <a class="btn btn-outline-dark" href="{{url_for('profileStatistics')}}">
+						<div class="item" style="vertical-align: top; display: inline-block;">
+							<img src="https://img.icons8.com/small/24/000000/user-male-circle.png"/>
+							<span class="tab" style="display: block;">Profile Statistics</span>
+						</div>
+					</a>
+			       </li>
+
+				  <li class="nav-item">
+			        <a class="btn btn-outline-dark" href="{{url_for('upcomingContests')}}">
+						<div class="item" style="vertical-align: top; display: inline-block;">
+							<img src="https://img.icons8.com/material-outlined/24/000000/clock--v1.png"/>
+							<span class="tab" style="display: block;">Upcoming Contests</span>
+						</div>
+					</a>
+			       </li>
+				   
+			       {%else%}
+
+				   <li class="nav-item">
+			        <a class="btn btn-outline-dark" href="{{url_for('profileStatistics')}}">
+						<div class="item" style="vertical-align: top; display: inline-block;">
+							<img src="https://img.icons8.com/small/24/000000/user-male-circle.png"/>
+							<span class="tab" style="display: block;">Profile Statistics</span>
+						</div>
+					</a>
+			       </li>
+
+				   <li class="nav-item">
+			        <a class="btn btn-outline-dark" href="{{url_for('upcomingContests')}}">
+						<div class="item" style="vertical-align: top; display: inline-block;">
+							<img src="https://img.icons8.com/material-outlined/24/000000/clock--v1.png"/>
+							<span class="tab" style="display: block;">Upcoming Contests</span>
+						</div>
+					</a>
+			       </li>
+
+				
+			       <a class="btn btn-outline-dark" href="{{url_for('saved')}}">
+					   
+					<div class="item" style="vertical-align: top; display: inline-block;">
+						<img src="https://img.icons8.com/material-outlined/24/000000/cloud-checked.png"/>
+						<span class="tab" style="display: block;">Saved Files</span>
+					</div>
+				   </a> 
+				   <li>
+						<a class="btn btn-outline-dark" href="{{url_for('template')}}">
+							<div class="item" style="vertical-align: top; display: inline-block;">
+								<img src="https://img.icons8.com/ios-glyphs/24/000000/google-code.png"/>
+							<span class="tab" style="display: block;">Templates</span>
+							</div>
+					   </a>
+				   </li>
+				   <li class="nav-item">
+			        <a class="btn btn-outline-dark" href="{{url_for('algorithm_list')}}">
+						<div class="item" style="vertical-align: top; display: inline-block;">
+							<img src="https://img.icons8.com/external-itim2101-lineal-itim2101/24/000000/external-algorithm-artificial-intelligence-itim2101-lineal-itim2101.png"/>
+							<span class="tab" style="display: block;">Algorithms</span>
+						</div>
+					</a>
+			       </li>
+				   
+				   </ul>
+					
+				 {%endif%}
+					</div>
+
+				   <ul class = "nav navbar-nav navbar-right" style="font-family: 'Product Sans';">
+					{%if current_user.is_anonymous %}
+					<li>
+						<a class="btn navbar-btn ml-2 text-white btn-secondary" href="{{url_for('login')}}">Login</a>
+					</li>
+					{%else%}
+					<li>
+						<a class="btn navbar-btn ml-2 text-white btn-secondary" href="{{url_for('logout')}}">Logout</a>
+					</li>
+				   </ul>
+				 {%endif%}
+			      
+			      
+			    </div>
+			  </nav>
+		</div>
+		<div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div style="position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem;color:#4093ff;background-color:#b6e4ff;border-color:#4294ff; font-family: 'Product Sans'; font-weight: bold;">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+	<footer>
+		<div class="border-light">
+		<div class="container">
+		<div class="text-dark">
+		<hr style="height:1px;border:none;color:#333;background-color:#333;" />
+		<p align="center" style="font-family: 'Product Sans';">Made with
+			<a href="https://flask.palletsprojects.com/en/2.0.x/"> Flask</a>, <a href="https://www.hackerearth.com/docs/wiki/developers/legacy/"> HackerEarth</a>, <a href="https://codemirror.net/">CodeMirror</a> and 💖
+			</p>
+		</div></div></div>
+	</footer>
+
+	
+
+	</body>
+</html>

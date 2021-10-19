@@ -1,0 +1,149 @@
+{%extends "base.html"%}
+
+{%block app_content%}
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/base16/solarized-dark.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.6.0/dist/highlightjs-line-numbers.min.js"></script>
+
+
+<!-- <script>
+		window.addEventListener('DOMContentLoaded', (event) => {      
+			document.querySelectorAll('pre[class*=language-]').forEach(function(node) {
+				node.classList.add('line-numbers');
+			});
+			Prism.highlightAll();
+		});
+	</script> -->
+
+
+<!-- run part starts from here -->
+
+<script>
+	hljs.initHighlighting();
+</script>
+
+<Style>
+	textarea {
+		position: absolute;
+		left: -100%;
+	}
+</Style>
+
+
+
+
+<!-- Source Code Part -->
+<div class="container"
+	style="box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);margin-top:5%;">
+	<div class="row">
+		<div class="col-md-12 right">
+			<div class="output-details">
+				<div class="output-details-info compile-status" align="left" style="margin-top:2%;">
+					<strong><i class="bi bi-code-square"></i> Source Code: </strong>
+
+					<button type="button" class="btn btn-outline-success"
+						style="float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+						id="download_button1"><strong><i class="bi bi-download"></i> Download</strong></button>
+					<button type="button" class="btn btn-outline-secondary"
+						style="float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+						id="copy_button3"><strong><i class="bi bi-clipboard-check"></i> Copy</strong></button>
+				</div>
+			</div>
+			<div class="output-io" class="p-0 my-3 .border-warning"
+				style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:2%;">
+				<div class="output-error-box">
+					<pre class="error-message" style="padding-left:3%"
+						id="compiled_saved_code"><code><strong>{{content}}</strong></code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+	{%if content%}
+
+	<script>
+		function copyFunction() {
+			const copyText = document.getElementById("compiled_saved_code").textContent;
+			const textArea = document.createElement('textarea');
+			textArea.textContent = copyText;
+			document.body.append(textArea);
+			textArea.select();
+			document.execCommand("copy");
+		}
+
+		document.getElementById('copy_button3').addEventListener('click', copyFunction);
+
+		function saveTextAsFile() {
+			var textToWrite = document.getElementById('compiled_saved_code').innerText;
+			var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
+			var fileNameToSaveAs = "saved_code.txt";
+
+			var downloadLink = document.createElement("a");
+			downloadLink.download = fileNameToSaveAs;
+			downloadLink.innerHTML = "Download File";
+			if (window.webkitURL != null) {
+				// Chrome allows the link to be clicked
+				// without actually adding it to the DOM.
+				downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+			}
+			else {
+				// Firefox requires the link to be added to the DOM
+				// before it can be clicked.
+				downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+				downloadLink.onclick = function () {
+					document.body.removeChild(downloadLink);
+				};
+				downloadLink.style.display = "none";
+				document.body.appendChild(downloadLink);
+			}
+
+			downloadLink.click();
+		}
+
+		var button = document.getElementById('download_button1');
+		button.addEventListener('click', saveTextAsFile);
+	</script>
+
+	{%endif%}
+</div>
+
+<!-- Compile Status -->
+
+<br>
+<div class="card mx-auto"
+	style="width: 91%; border: #b1c451 1px solid; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+	<div class="card-header" style="background-color: #b1c451;">
+		<strong><i class="bi bi-flag-fill"></i> Build Log: </strong>
+
+	</div>
+
+	<div class="card-body">
+		<div class="output-details-info compile-status" align="center" style="margin-top:2%;">
+			Compile status:
+			{% if result['statusCode'] == 200 %}
+			Build Successful! ✅
+			{%else%}
+			Build Failed! 😞
+			{%endif%}
+		</div>
+		<div class="mx-auto" style="border: 1px solid black; border-radius: 0.2em;">
+			{% if result['statusCode'] != 200 %}
+			<div class="output-io" class="p-0 my-3 .border-warning"></div>
+			<div class="output-error-box">
+				<div class="error-key" style="color:#040404; font-family: 'Product Sans';"><b>Compilation error</b>
+				</div>
+				<pre class="error-message" style="background-color:#F96467;padding-left:3%; ">{{result['error']}}</pre>
+			</div>
+		</div>
+		{%endif%}
+	</div>
+
+
+
+</div>
+</div>
+
+
+{%endblock%}

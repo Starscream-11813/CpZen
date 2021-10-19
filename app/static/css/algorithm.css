@@ -1,0 +1,10 @@
+div.body{
+    background-image: url('login.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    min-height: 87%; 
+  }
+  
+  div.row{
+    opacity: 0.8;
+  }

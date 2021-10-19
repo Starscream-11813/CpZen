@@ -1,0 +1,526 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+
+{% if rating_list %}
+
+<strong style="display: flex; justify-content: center; font-family: 'Product Sans';">{{judge_name}}-{{'Rating List (Line
+    Chart)'}}</strong>
+<div class="rating_line mx-auto" style="display: flex; justify-content: center; font-family: 'Product Sans';">
+    <div class="chart-container"
+        style="border: black 1px solid; border-radius: 0.7em; display: flex; justify-content: center; left: 20px; right: 20px;">
+        <canvas id="lineChart" width="1200" height="500"></canvas>
+    </div>
+
+
+    <script>
+        var ctx = document.getElementById('lineChart').getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: {{ rating_list }},
+        datasets: [
+            {
+                label: "{{ handle_value }} - {{ judge_name }}",
+                data: {{ rating_list }},
+            fill: false,
+            backgroundColor: 'rgb(0, 179, 60)',
+            lineTension: 0.1
+                        }
+        ]
+                },
+        options: {
+            responsive: false,
+                title: {
+                diplay: true,
+                    text: 'Rating for Contests'
+            }
+        }
+                
+            });
+
+    </script>
+
+</div>
+<br>
+
+{% endif %}
+
+{% if verdict_list %}
+<strong style="display: flex; justify-content: center; font-family: 'Product Sans';">{{judge_name}}-{{'Verdict List
+    (Doughnut Chart)'}}</strong>
+<div class="verdict_pie" style="display: flex; justify-content: center; font-family: 'Product Sans';">
+
+    <div class="chart-container"
+        style="position: relative; height:50%; width:50%; border: black 1px solid; border-radius: 0.7em; display: flex; justify-content: center;">
+
+        <canvas id="doughnutChart" width="20" height="20"></canvas>
+    </div>
+    <script>
+        var ctx = document.getElementById('doughnutChart').getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Accepted',
+                    'Wrong Answer',
+                    'Time Limit Exceeded',
+                    'Memory Limit Exceeded',
+                    'Runtime Error',
+                    'Compilation Error',
+                    'Other Verdicts',
+                    'Presentation Error'
+                ],
+                datasets: [
+
+                    {
+                        label: 'Data Points',
+                        data: {{ verdict_list }},
+            fill: false,
+            backgroundColor: [
+                'rgb(0, 179, 60)',
+                'rgb(179, 0, 0)',
+                'rgb(0, 107, 179)',
+                'rgb(148, 0, 211)',
+                'rgb(255, 128, 0)',
+                'rgb(128, 128, 255)',
+                'rgb(128, 128, 128)',
+                'rgb(255, 128, 213)'
+            ]
+        }
+                        
+                    ]
+                },
+        options: {
+
+            // scales: {
+            //     y: {
+            //         beginAtZero: true
+            //     }
+            // },
+            maintainAspectRation: false,
+
+                title: {
+                display: true,
+                    text: 'Verdict List'
+            },
+
+            plugins: {
+
+                zoom: {
+
+                    pan: {
+                        enabled: true,
+                            mode: 'xy',
+                                threshold: 10
+                    },
+                    wheel: {
+                        enabled: true
+                    }
+                }
+            }
+        }
+                
+            });
+
+    </script>
+</div>
+{% endif %}
+
+{% if submission_count %}
+<br>
+<br>
+<strong style="display: flex; justify-content: center; font-family: 'Product Sans';">{{handle_value}} - Heat Map (Previous 1 year)</strong>
+<div class="heat_map" style="display: flex; justify-content: center; font-family: 'Product Sans';">
+    <style>
+        /* .chartCard {
+            width: 100vw;
+            height: calc(100vh - 40px);
+            background: rgba(255, 26, 104, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } */
+
+        .chartBox {
+            width: 1000px;
+            height: 200px;
+            padding: 20px;
+            border-radius: 20px;
+            border: solid 1px rgb(0, 0, 0);
+            background: white;
+        }
+    </style>
+    
+    <div class="chartCard">
+        <div class="chartBox">
+            <canvas id="myChart"></canvas>
+            <!-- <button onclick="generateDate()">test</button> -->
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@1.1.0/dist/chartjs-chart-matrix.min.js"></script>
+    <script>
+
+        //date settings
+        function isoDayofWeek(date) {
+            let width_date = date.getDay(); // 0..6 starting from Sunday
+            width_date = (width_date + 6) % 7 + 1; // 0..7 starting week monday
+            return '' + width_date;  // string so it get parsed
+        };
+
+        // setup date as 365 days squares
+        function generateDate() {
+            
+            
+            const temp_sub = {{ submission_count|tojson }};
+            const sub_info = new Map(temp_sub);
+            // const temp_sub2 = [
+            //     ['2020-10-11', 25],
+            //     ['2020-10-12', 50],
+            //     ['2021-12-07', undefined],
+            //     ['2019-01-28', 1],
+            //     ['2019-04-02', 1],
+            //     ['2019-10-22', 1],
+            //     ['2021-08-06', 32],
+            //     ['2021-07-03', 12],
+            //     ['2021-07-09', 1]
+            // ]
+            // for(let i = 0; i < temp_sub.length; i++){
+            //     sub_info.set(temp_sub[i][0], temp_sub[i][1]);
+                
+            // }
+            // console.log("lol");
+            // console.log(temp_sub);
+            // console.log(temp_sub2);
+            // console.log("lol2");
+            // const sub_info = {{ submission_count|safe }}
+            // const sub_info = new Map([
+            //     {{submission_count|safe}}
+            // ])
+            // const sub_info = new Map([
+            //     ['2020-10-11', 25],
+            //     ['2020-10-12', 50],
+            //     ['2021-12-07', undefined],
+            //     ['2019-01-28', 1],
+            //     ['2019-04-02', 1],
+            //     ['2019-10-22', 1],
+            //     ['2021-08-06', 32],
+            //     ['2021-07-03', 12],
+            //     ['2021-07-09', 1]
+            // ])
+
+
+            const d = new Date();
+            const today = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+            const data2 = [];
+            const end = today;
+            let date = new Date(new Date().setDate(end.getDate() - 365));
+            console.log(sub_info);
+            while (date <= end) {
+                const iso = date.toISOString().substr(0, 10);
+                data2.push({
+                    x: iso,
+                    y: isoDayofWeek(date),
+
+                    d: iso,
+                    v: (sub_info.get(iso) === undefined) ? 0 : (sub_info.get(iso))
+                    
+                     
+                });
+                date = new Date(date.setDate(date.getDate() + 1));
+            }
+            // console.log(data2);
+
+            return data2;
+        }
+
+
+        // setup block of data
+        const data = {
+            datasets: [{
+                labels: 'Heat Map',
+                data: generateDate(),
+                backgroundColor(c) {
+                    const value = c.dataset.data[c.dataIndex].v;
+                    const alpha = (10 + 3*value) / 60;
+                    return `rgba(0, 205, 51, ${alpha})`;
+                },
+                borderColor: 'green',
+                borderRadius: 1,
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(255, 26, 104, 0.2)',
+                hoverBorderColor: 'rgba(255, 26, 104, 1)',
+                width(c) {
+                    const a = c.chart.chartArea || {};
+                    return (a.right - a.left) / 53 - 1;
+                },
+                height(c) {
+                    const a = c.chart.chartArea || {};
+                    return (a.bottom - a.top) / 7 - 1;
+                },
+            }]
+        };
+
+        // scaling each block
+        const scales = {
+            y: {
+                type: 'time',
+                offset: 'true',
+                time: {
+                    unit: 'day',
+                    round: 'day',
+                    isoWeekDay: 1,
+                    parser: 'i',
+                    displayFormats: {
+                        day: 'iiiiii'
+                    }
+                },
+                reverse: true,
+                position: 'right',
+                ticks: {
+                    maxRotation: 0,
+                    autoSkip: true,
+                    padding: 1,
+                    font: {
+                        size: 9
+                    }
+                },
+                grid: {
+                    display: false,
+                    drawBorder: false,
+                    tickLength: 0
+                }
+            },
+            x: {
+                type: 'time',
+                position: 'bottom',
+                offset: true,
+                time: {
+                    unit: 'week',
+                    round: 'week',
+                    isoWeekDay: 1,
+                    displayFormats: {
+                        week: 'MMM dd'
+                    }
+                },
+                ticks: {
+                    maxRotation: 0,
+                    autoSkip: true,
+                    font: {
+                        size: 9,
+
+                    }
+                },
+                grid: {
+                    display: false,
+                    drawBorder: false,
+                    tickLength: 0
+                }
+            }
+        };
+
+        // config 
+        const config = {
+            type: 'matrix',
+            data: data,
+            options: {
+                maintainAspectRatio: false,
+                scales: scales,
+                plugins: {
+                    legend: false,
+                    tooltip: {
+                        displayColors: false,
+                        callbacks: {
+                            title() {
+                                return '';
+                            },
+                            label(context) {
+                                const v = context.dataset.data[context.dataIndex];
+                                return ['Date: ' + v.d, 'Number of Submissions: ' + v.v];
+                            }
+                        }
+                    },
+                },
+            }
+        };
+
+        // render init block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+</div>
+
+{% endif %}
+
+{% if unsolved_problems and judge_name == "CodeForces" %}
+<br>
+<div class="col-md-12 text-center"><button class="btn" id="unsolved_button"
+        style="background-color: #b1c451; font-family: 'Product Sans';"><strong>Unsolved Problems ({{ unsolved_problems
+            | length}})</strong></button></div>
+
+<div class="unsolved mx-auto" id="unsolved_table" style="width: 1200;">
+    <div class="card rounded my-3 border-success mb-3">
+        <table class="table table-bordered table-hover table-striped" style="font-family: 'Product Sans';">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">Problem ID</th>
+                    <th scope="col" style="text-align: center">Problem Name</th>
+                    <th scope="col" style="text-align: center">Tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in unsolved_problems %}
+                <tr>
+                    <td style="text-align: center"><a href="{{item[2]}}">{{item[0]}}</a> </td>
+                    <td style="text-align: center">{{item[1]}}</td>
+                    <td style="text-align: center">
+                        {% for tags in item[3] %}
+                        {{tags}},
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#unsolved_table').hide();
+
+        $('#unsolved_button').click(function () {
+            $('#unsolved_table').toggle(1500);
+        });
+    });
+</script>
+{% endif %}
+
+{% if unsolved_problems and judge_name == "UVa" %}
+<br>
+<div class="col-md-12 text-center"><button class="btn" id="unsolved_button"
+        style="background-color: #b1c451; font-family: 'Product Sans';"><strong>Unsolved Problems ( {{unsolved_problems
+            | length}} )</strong></button></div>
+
+<div class="unsolved mx-auto" id="unsolved_table" style="width: 1200;">
+    <div class="card rounded my-3 border-success mb-3">
+        <table class="table table-bordered table-hover table-striped" style="font-family: 'Product Sans';">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">Problem ID</th>
+                    <th scope="col" style="text-align: center">Problem Name</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in unsolved_problems %}
+                <tr>
+                    <td style="text-align: center"><a href="{{item[2]}}">{{item[0]}}</a> </td>
+                    <td style="text-align: center">{{item[1]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#unsolved_table').hide();
+
+        $('#unsolved_button').click(function () {
+            $('#unsolved_table').toggle(1500);
+        });
+    });
+</script>
+{% endif %}
+
+{% if unsolved_problems and judge_name == "AtCoder" %}
+<br>
+<div class="col-md-12 text-center"><button class="btn" id="unsolved_button"
+        style="background-color: #b1c451; font-family: 'Product Sans';"><strong>Unsolved Problems ( {{unsolved_problems
+            | length}} )</strong></button></div>
+
+<div class="unsolved mx-auto" id="unsolved_table" style="width: 1200;">
+    <div class="card rounded my-3 border-success mb-3">
+        <table class="table table-bordered table-hover table-striped" style="font-family: 'Product Sans';">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">Problem ID</th>
+                    <th scope="col" style="text-align: center">Problem Name</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in unsolved_problems %}
+                <tr>
+                    <td style="text-align: center"><a href="{{item[1]}}">{{item[0]}}</a> </td>
+                    <td style="text-align: center">{{item[2]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#unsolved_table').hide();
+
+        $('#unsolved_button').click(function () {
+            $('#unsolved_table').toggle(1500);
+        });
+    });
+</script>
+{% endif %}
+
+{% if unsolved_problems and judge_name == "SPOJ" %}
+<br>
+<div class="col-md-12 text-center"><button class="btn" id="unsolved_button"
+        style="background-color: #b1c451; font-family: 'Product Sans';"><strong>Unsolved Problems ( {{unsolved_problems
+            | length}} )</strong></button></div>
+
+<div class="unsolved mx-auto" id="unsolved_table" style="width: 1200;">
+    <div class="card rounded my-3 border-success mb-3">
+        <table class="table table-bordered table-hover table-striped" style="font-family: 'Product Sans';">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">Problem ID</th>
+                    <th scope="col" style="text-align: center">Problem Name</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in unsolved_problems %}
+                <tr>
+                    <td style="text-align: center"><a href="{{item[2]}}">{{item[0]}}</a> </td>
+                    <td style="text-align: center">{{item[1]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#unsolved_table').hide();
+
+        $('#unsolved_button').click(function () {
+            $('#unsolved_table').toggle(1500);
+        });
+    });
+</script>
+{% endif %}
+
+{% endblock %}

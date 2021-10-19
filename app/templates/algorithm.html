@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block app_content %}
+<div class="body">
+    <div class="row">
+        <div class="col-lg-5 m-auto">
+           
+            <div class="card-title text-center mt-3">
+                <b class="text-success" style="font-size: 3vw; font-family: 'Product Sans Medium'; font-weight: bold;">Algorithm</b> 
+            </div>
+
+                
+            <form action="" method="POST">
+                {{form.hidden_tag()}}
+                <div class="input-group mb-5">
+                    <div class="input-group-prepend">
+                        <!-- <span class="input-group-text py-3">
+                            <i class="bi bi-person-circle"></i>
+                        </span> -->
+                    </div>
+                    <!-- <input type="text" class="form-control py-2"> -->
+                    {{form.algo_name(class="form-control py-2", size=58.9, placeholder="Enter Algorithm Name...", style="border-radius: 1px;")}}
+                </div>
+
+                <div class="input-group mb-5">
+                    <div class="input-group-prepend">
+                        <!-- <span class="input-group-text py-3">
+                            <i class="bi bi-file-earmark-lock2"></i>
+                        </span> -->
+                    </div>
+                    <!-- <input type="text" class="form-control py-2"> -->
+                    {{form.algo_resources(class="form-control py-2", size=58.9, placeholder="Enter Resource Links or Details...")}}
+                    
+                </div>
+                
+                <div class="input-group mb-5">
+                    <div class="input-group-prepend">
+                        <!-- <span class="input-group-text py-3">
+                            <i class="bi bi-file-earmark-lock2"></i>
+                        </span> -->
+                    </div>
+                    <!-- <input type="text" class="form-control py-2"> -->
+                    {{form.algo_problems(class="form-control py-2", size=58.9, placeholder="Enter Algorithm Problem Links or Details...")}}
+                    
+                </div>
+
+                <div class="input-group mb-5" style="display: flex; justify-content: center;">
+                    <div class="input-group-prepend">
+                        <!-- <span class="input-group-text py-3">
+                            <i class="bi bi-file-earmark-lock2"></i>
+                        </span> -->
+                    </div>
+                    <!-- <input type="text" class="form-control py-2"> -->
+                    <p style="color: grey;">Algorithm Proficiency: </p>
+                    {{form.algo_proficiency(style="display: inline")}}
+                </div>
+
+                <div class="flex-container2" style="display: flex; justify-content: center;" >
+                    <p style="color: grey;">Algorithm Type: </p>
+                    {{form.algo_type(style="display: inline")}}
+                </div>
+                <br>
+                <div class="text-center">
+                    {{form.submit(href="{{url_for('algorithm_list')}}", class="btn btn-success ml-auto", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:200px;")}}
+                    <a class="btn btn-outline-success m-lg-auto" href="{{url_for('algorithm_list')}}" style="position: relative; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:200px; display: flex; justify-content: center; ">Existing Algo Coverage Stats</a>
+                </div>
+             
+                
+            </form>
+        </div>
+
+    </div>
+</div> 
+{% endblock %}

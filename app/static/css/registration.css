@@ -1,0 +1,10 @@
+div.body{
+    background-image: url('signUP.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    min-height: 80%; 
+}
+  
+div.row{
+    opacity: 0.8;
+}

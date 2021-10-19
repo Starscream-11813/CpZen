@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+
+
+<form action="{{ url_for('graph') }}" method="POST">
+<div class="container" style="display: flex; justify-content: center; margin-top: 5%; border: 1px solid black; border-radius: 1em; font-family: 'Product Sans';">
+    <div style="margin-top: 3%; margin-bottom: 3%;">
+        <h2>Choose your Online Judge</h2>
+        <p>Click on any checkbox to toggle between showing and hiding content.</p>
+
+        <div class="card" style="display: inline-block;">
+            <span class="card-body" style="display: inline-block; border: grey 1px solid; border-radius: 0.5em;">
+                <div>
+                    <img src="https://art.npanuhin.me/SVG/Codeforces/Codeforces.colored.svg" class="card-img-top" alt="codeforces" style="width: 150px; height: 150px; border-radius: 0.5em;">
+                </div>
+                <div class="form-check form-switch">
+                    {{ form.codeforces(id="codeforces_handle", **{'data-toggle':'collapse', 'data-target': '#demo'}) }}
+                    <label class="form-check-label" for="flexSwitchCheckDefault"><a href="https://codeforces.com/" class="badge " style="text-decoration: none; background-color: #ffcc00;">CodeForces</a></label>
+                </div>
+            </span>
+
+            <span class="card-body" style="display: inline-block; border: grey 1px solid; border-radius: 0.5em;">
+                <div>
+                    <img src="https://cdn.codechef.com/sites/default/files/uploads/pictures/811b20a47eac52b10c90ab82e0628e21.png" class="card-img-top" alt="codechef" style="width: 150px; height: 150px;">
+                </div>
+                <div class="form-check form-switch">
+                    {{ form.codechef(id="codechef_handle", **{'data-toggle':'collapse', 'data-target': '#demo'}) }}
+                    <label class="form-check-label" for="flexSwitchCheckDefault"><a href="https://www.codechef.com/" class="badge" style="text-decoration: none; background-color:#804000;">CodeChef</a></label>
+                </div>
+            </span>
+
+            <span class="card-body" style="display: inline-block; border: grey 1px solid; border-radius: 0.5em;">
+                <div>
+                    <img src="https://i.ibb.co/sVD316M/uva-1.png" class="card-img-top" alt="uva" style="width: 150px; height: 150px;">
+                </div>
+                <div class="form-check form-switch">
+                    {{ form.uva(id="uva_handle", **{'data-toggle':'collapse', 'data-target': '#demo'}) }}
+                    <label class="form-check-label" for="flexSwitchCheckDefault"><a href="https://onlinejudge.org/" class="badge" style="text-decoration: none; background-color: #e6005c;">UVa</a></label>
+                </div>
+            </span>
+
+            <span class="card-body" style="display: inline-block; border: grey 1px solid; border-radius: 0.5em;">
+                <div>
+                    <img src="https://i.ibb.co/tzfp0hZ/atcoder.png" class="card-img-top" alt="atcoder" style="width: 150px; height: 150px;">
+                </div>
+                <div class="form-check form-switch">
+                    {{ form.atcoder(id="atcoder_handle", **{'data-toggle':'collapse', 'data-target': '#demo'}) }}
+                    <label class="form-check-label" for="flexSwitchCheckDefault"><a href="https://atcoder.jp/" class="badge" style="text-decoration: none; background-color: #6b6b47;">AtCoder</a></label>
+                </div>
+            </span>
+
+            <span class="card-body" style="display: inline-block; border: grey 1px solid;  border-radius: 0.5em;">
+                <div>
+                    <img src="https://i.ibb.co/2W8RT3G/spoj.png" class="card-img-top" alt="codechef" style="width: 150px; height: 150px;">
+                </div>
+                <div class="form-check form-switch">
+                    {{ form.spoj(id="spoj_handle", **{'data-toggle':'collapse', 'data-target': '#demo'}) }}
+                    <label class="form-check-label" for="flexSwitchCheckDefault"><a href="https://onlinejudge.org/" class="badge" style="text-decoration: none; background-color: #008ae6;">SPOJ</a></label>
+                </div>
+            </span>
+
+        </div>
+
+        <div id="demo" class="collapse">
+                {{form.hidden_tag()}}
+                <br>
+                {{ form.handle_name(class="form-control", size=40, placeholder="Input Judge handle") }}
+                <br>
+                {{ form.get_stat(class="btn btn-success ml-auto", type="submit", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:200px;") }}
+                <br>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+</div>
+</form>
+
+
+
+{% endblock %}

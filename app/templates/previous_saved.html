@@ -1,0 +1,135 @@
+{%extends "base.html"%}
+
+
+
+{%block app_content%}
+    
+    {% for code in content %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.6.0/dist/highlightjs-line-numbers.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/idea.min.css"/>
+    
+    <script>
+        hljs.highlightAll();
+    </script>
+    
+
+    <style>
+        textarea {
+            position: absolute;
+            left: -100%;
+        }
+    </style>
+
+    <!-- Saved Files -->
+	<br>
+	<div class="card mx-auto" style="width: 91%; border: #b1c451 1px solid; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); font-family: 'Product Sans';">
+		<div class="card-header" style="background-color: #b1c451;">
+			{%if content%} 
+                {% set splitstring = code|string() %}
+                {% set separated = splitstring.split('-----') %}
+                <strong><span id="saved_name">{{ separated[0] }}</span></strong>
+                
+                
+            {% endif %}
+			
+		</div>
+		
+		<div class="card-body">
+			<div>
+				<button type="button" class="btn btn-outline-success" style="float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" id="download_button2"><strong><i class="bi bi-download" id="download_button2"></i> Download</strong></button>
+				<button type="button" class="btn btn-outline-secondary" style="float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" id="copy_button4"><strong><i class="bi bi-clipboard-check"></i> Copy</strong></button>
+			</div>	
+				
+			<div style="border: 1px solid black; border-radius: 0.2em;">
+				{%if content%}
+                    {% set splitstring = code|string() %}
+                    {% set separated = splitstring.split('-----') %}
+                    
+                    <pre class="error-message" style="padding-left:3%" id="saved_code_1"><code><strong>{{separated[1]}}</strong></code></pre>
+                {%else%}
+                    <code class="error-message" style="padding-left:3%">No saved code</code>
+                {%endif%}
+			</div>
+
+		</div>
+
+	</div>
+
+
+    
+    
+    {% endfor %}
+    <script>
+        function copyFunction() {
+        const copyText = document.getElementById("saved_code_1").textContent;
+        const textArea = document.createElement('textarea');
+        textArea.textContent = copyText;
+        document.body.append(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        }
+
+        document.getElementById('copy_button4').addEventListener('click', copyFunction);
+
+        function saveTextAsFile()
+        {
+            var textToWrite = document.getElementById('saved_code_1').innerText;
+            var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+            var fileNameToSaveAs = document.getElementById('saved_name').innerText;
+
+            var downloadLink = document.createElement("a");
+            downloadLink.download = fileNameToSaveAs;
+            downloadLink.innerHTML = "Download File";
+            if (window.webkitURL != null)
+            {
+                // Chrome allows the link to be clicked
+                // without actually adding it to the DOM.
+                downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+            }
+            else
+            {
+                // Firefox requires the link to be added to the DOM
+                // before it can be clicked.
+                downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+                downloadLink.onclick = function(){
+                    document.body.removeChild(downloadLink);
+                };
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+            }
+
+            downloadLink.click();
+        }
+
+        var button = document.getElementById('download_button2');
+        button.addEventListener('click', saveTextAsFile);  
+    </script>
+
+
+
+	<!--    
+	 	
+            <div class="col-md-12 right">
+                    <div class="output-details">
+                        <div class="output-details-info compile-status" align="center" style="margin-top:2%;">
+                        	Previous Saved:
+                        </div>
+                    </div>
+                    <div class="output-io" class="p-0 my-3 .border-warning" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:2%;">
+                        <div class="output-error-box">
+                        {%if content%}
+                            <pre class="error-message" style="background-color:gray;padding-left:3%" id="saved_code">{{content}}</pre>
+                        {%else%}
+                        	<pre class="error-message" style="background-color:gray;padding-left:3%" id="saved_code">No saved code</pre>
+                        {%endif%}
+                        </div>
+                    </div>
+            </div>
+        </div>
+        {%if content%}
+        <input value='Download' type='button'onclick='doDL(document.getElementById("saved_code").innerHTML)' class="btn m-1 btn-success", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+        {%endif%}
+    </div> -->
+{%endblock%}
+

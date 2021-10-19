@@ -1,0 +1,69 @@
+{%extends "base.html"%}
+
+{%block app_content%}
+
+<div class="text-white filter-light">
+    <div class="container" style="box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);">
+    	<div class="row" style="background-color: #dadada;">
+        <div class="col-md-12">
+			<form action="" method="post" 
+				class="p-0 my-3 border">
+				{{form.hidden_tag()}}
+				<!-- <div class="form-group ml-auto w-25" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+					{{form.language(class="form-control px-3 text-nowrap my-2")}}
+				</div> -->
+				<br>
+				<div class="form-group ml-auto w-40" style="position: relative; box-shadow: 1 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+					<!-- {{form.language(class="form-control px-3 text-nowrap my-2")}} -->
+					<b style="color: black; font-family: 'Product Sans';">Select Language: </b>
+					{{form.language(style="display: inline")}}
+					
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+					
+				</div>
+				<br>
+				{{ form.source_code(placeholder="your code starts here...") }}
+			<!-- <div class="form-group">
+			<div class="form-check">
+				{{form.custom_input_check(value='n', class="form-check-input", placeholder="Custom Input", onclick="toggle('Textarea')")}}
+				{{form.custom_input_check.label(style="color:black;")}}
+			</div>
+			</div> -->
+			<div class="form-check form-switch">
+				{{form.custom_input_check(value='n', class="form-check-input", placeholder="Custom Input", onclick="toggle('Textarea')")}}
+				{{form.custom_input_check.label(style="color:black;")}}
+			</div>
+		<div class="form-group">
+			<div id="Textarea" style="display:none; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+				{{form.custom_input(placeholder="stdin...")}}
+			</div>
+		</div>
+		<br>
+		<div>
+			{{form.code_name(class="bg-dark text-white", placeholder="Name your code before saving...", style="width: 300px;")}}
+		</div>
+
+
+			<button class="btn btn-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+				<b class="bi bi-gear-fill"></b> {{form.compile_code(accesskey="c", style="background-color:#dc3545 ; color:white; border-color:#dc3545; font-family: 'Product Sans';" )}}
+			</button>
+			<button class="btn m-1 btn-success", accesskey="r" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+				<b class="bi bi-play-circle-fill"></b> {{form.run_code(accesskey="r", style="background-color:#198754; color:white; border-color:#198754; font-family: 'Product Sans';" )}}
+			</button>
+			<button class="btn btn-primary ml-auto", accesskey="s" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+				<b class="bi bi-save2-fill"></b> {{form.save_code(accesskey="s", style="background-color:#0d6efd; color:white; border-color:#0d6efd; font-family: 'Product Sans';" )}}
+			</button>
+
+			<button class="btn btn-warning ml-auto", accesskey="t" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+				<b class="bi bi-file-earmark-code-fill" style="font-size: 20px;"></b> {{form.save_template(accesskey="t", style="background-color:#ffc107; color:black; border-color:#ffc107; font-family: 'Product Sans';" )}}
+			</button>
+			</form>
+		</div>
+		</div>
+	</div>
+</div>	
+
+{%endblock%}
+
+

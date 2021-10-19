@@ -1,0 +1,59 @@
+{%extends "base.html"%}
+
+
+{%block app_content%}
+	<link rel="stylesheet" href="../static/css/login.css">
+	<div class="body">
+		<div class="row">
+			<div class="col-lg-5 m-auto">
+				<div class="card mt-5 bg-dark">
+					<div class="card-title text-center mt-3">
+						<b class="text-success" style="font-size: 3vw; font-family: 'Product Sans Medium'; font-weight: bold;">Sign In</b> 
+					</div>
+
+					<div class="card-body">
+						<form action="" method="POST">
+							{{form.hidden_tag()}}
+							<div class="input-group mb-5">
+								<div class="input-group-prepend">
+									<span class="input-group-text py-3">
+										<i class="bi bi-person-circle"></i>
+									</span>
+								</div>
+								<!-- <input type="text" class="form-control py-2"> -->
+								{{form.username(class="form-control py-2", size=58.9, placeholder="Username")}}
+								{%for error in form.username.errors %}
+									<span style="color: red;">[{{error}}]</span>
+								{%endfor%}
+							</div>
+
+							<div class="input-group mb-5">
+								<div class="input-group-prepend">
+									<span class="input-group-text py-3">
+										<i class="bi bi-file-earmark-lock2"></i>
+									</span>
+								</div>
+								<!-- <input type="text" class="form-control py-2"> -->
+								{{form.password(class="form-control py-2", size=58.9, placeholder="Password")}}
+								{%for error in form.password.errors%}
+									<span style="color: red;">[{{error}}]</span>
+								{%endfor%}
+							</div>
+							<div style="color: white;">
+								{{form.remember_me()}} {{form.remember_me.label}}
+								<a href="{{ url_for('reset_request') }}" style="float: right;">Forgot Password?</a>
+							</div>
+
+							<div class="text-center">
+								
+								{{form.submit(class="btn btn-success ml-auto", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:200px;")}}
+							</div>
+							<p style="color: white; text-align: center;"><br>New User?<a href="{{url_for('register')}}"> Click to register</a></p>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+{%endblock%}
