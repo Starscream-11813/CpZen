@@ -19,8 +19,14 @@ The main goal of this application is to alleviate some of the tedious jobs a com
 
 ## Installation
 * Step-1: Make sure Python 3.7+ 64-bit is configured in your PC.
-* Step-2: Open powershell, and install the required packages and dependencies by running ```pip install -r requirements.txt```
-* Step-3: Run run.py with the command ```python run.py```
+* Step-2: Open powershell, and install the required packages and dependencies by running: 
+```shell
+pip install -r requirements.txt
+```
+* Step-3: Run run.py with the command: 
+```shell
+python run.py
+```
 * Step-4: The application will be up and running on ```http://127.0.0.1:5000/```
 
 
