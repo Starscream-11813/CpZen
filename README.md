@@ -49,4 +49,3 @@ python run.py
 * Step-4: The application will be up and running on ```http://127.0.0.1:5000/```
 
 
-
