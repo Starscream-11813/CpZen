@@ -12,15 +12,16 @@ CpZen is an Online Integrated Development Environment (IDE) for competitive prog
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) 
 ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
 ![Jinja](https://img.shields.io/badge/Jinja-%230259B.svg?style=for-the-badge&logo=Jinja&logoColor=white)
+![Beautiful Soup](https://img.shields.io/badge/Beautiful%20Soup-7957D5.svg?style=for-the-badge&logo=beautifulsoup&logoColor=white)
 ![HightlightJS](https://img.shields.io/badge/HighlightJS-F54A2A.svg?style=for-the-badge&logo=highlightjs&logoColor=white)
 ![ChartJS](https://img.shields.io/badge/Chart.JS-60B5CC.svg?style=for-the-badge&logo=chartdotjs&logoColor=white)
 ![Codemirror](https://img.shields.io/badge/Codemirror-%23FF0000.svg?style=for-the-badge&logo=codemirror&logoColor=white)
 ### APIs:
-* JDoodle
-* CLIST
-* Codeforces API
-* uHunt API
-* AtCoder API
+* [JDoodle]()
+* [CLIST]()
+* [Codeforces API]()
+* [uHunt API](https://uhunt.onlinejudge.org/api)
+* [AtCoder API]()
 ### IDE: 
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ### Testing Tool: 
