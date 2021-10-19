@@ -12,6 +12,7 @@ CpZen is an Online Integrated Development Environment (IDE) for competitive prog
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) 
 ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
 ![Jinja](https://img.shields.io/badge/Jinja-%230259B.svg?style=for-the-badge&logo=Jinja&logoColor=white)
+![HightlightJS](https://img.shields.io/badge/HighlightJS-F54A2A.svg?style=for-the-badge&logo=highlightjs&logoColor=white)
 ![Codemirror](https://img.shields.io/badge/Codemirror-%23FF0000.svg?style=for-the-badge&logo=codemirror&logoColor=white)
 ### APIs:
 * JDoodle
