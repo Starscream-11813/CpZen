@@ -7,10 +7,18 @@ CpZen is an Online Integrated Development Environment (IDE) for competitive prog
 ![Grade](https://img.shields.io/badge/Grade-Not%20Yet%20Graded-lightgrey)
 
 ## Built With
-### Frameworks: 
+### Frameworks and Dependencies: 
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) 
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) 
 ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
+![Jinja](https://img.shields.io/badge/Jinja-%230259B.svg?style=for-the-badge&logo=Jinja&logoColor=white)
+### APIs:
+* JDoodle
+* CLIST
+* Codemirror
+* Codeforces API
+* uHunt API
+* AtCoder API
 ### IDE: 
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ### Testing Tool: 
