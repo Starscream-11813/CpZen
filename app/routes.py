@@ -158,7 +158,7 @@ def compile():
     #     'memory_limit': 262144,
     # }
     LANG_CODE = {
-        'c': 4, 'java': 3, 'cpp17': 3, 'python3': 3, 'go': 3,
+        'c': 4, 'java': 3, 'cpp17': 0, 'python3': 3, 'go': 3,
         'sql': 3, 'csharp': 3, 'dart': 3, 'nodejs': 3, 'kotlin': 2, 'brainfuck': 0, "clojure": 2, "haskell": 3, "objc": 3, "perl": 3, "php": 3,
         "ruby": 3, "rust": 3, "scala": 3, 'bash': 3, 'lua': 2
     }
