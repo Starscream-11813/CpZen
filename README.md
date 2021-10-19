@@ -5,8 +5,9 @@ CpZen is an Online Integrated Development Environment (IDE) for competitive prog
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 ![IDE](https://img.shields.io/badge/IDE-Visual%20Studio%20Code-blue)
 ![License](https://img.shields.io/badge/license-MIT-orange.svg)
-![Grade](https://img.shields.io/badge/Grade-Not%20Yet%20Graded-lightgrey)
 ![Framework](https://img.shields.io/badge/Web%20Framework-Flask-red)
+![Grade](https://img.shields.io/badge/Grade-Not%20Yet%20Graded-lightgrey)
+
 
 ## Team Members:
 * Syed Rifat Raiyan- 180041205
