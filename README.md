@@ -6,7 +6,7 @@ CpZen is an Online Integrated Development Environment (IDE) for competitive prog
 ![License](https://img.shields.io/badge/license-MIT-orange.svg)
 ![Grade](https://img.shields.io/badge/Grade-Not%20Yet%20Graded-lightgrey)
 
-## Built With
+## Built With:
 ### Frameworks and Dependencies: 
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) 
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) 
@@ -36,7 +36,7 @@ CpZen is an Online Integrated Development Environment (IDE) for competitive prog
 ## Foreword:
 The main goal of this application is to alleviate some of the tedious jobs a competitive programmer has to do on a regular basis by integrating them in a single place.
 
-## Installation
+## Installation:
 * Step-1: Make sure Python 3.7+ 64-bit is configured in your PC.
 * Step-2: Open powershell, and install the required packages and dependencies by running: 
 ```shell
