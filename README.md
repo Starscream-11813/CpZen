@@ -59,7 +59,7 @@ Users can create a new account or login to an already existing account. If they 
 ![Reset Password](featuresDemo/demo images/resetpassword.PNG)
 
 ### Landing Page (post-Login):
-Text editor area with Syntax Highlighting, Auto-Indentation, Auto-Brackets Matching, Auto-Brackets Highlighting and Line Highlighting. Supports a total of 20 programming languages.
+Text editor area with Syntax Highlighting, Auto-Indentation, Auto-Brackets Matching, Auto-Brackets Highlighting and Line Highlighting. Supports a total of 20 programming languages.\
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
