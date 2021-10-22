@@ -80,6 +80,7 @@ Text editor area with Syntax Highlighting, Auto-Indentation, Auto-Brackets Match
 ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 ![Brainf**k](https://img.shields.io/badge/brain%20f**k-%13131011.svg?style=for-the-badge&logo=brainfuck&logoColor=white)
 ![Objective-C](https://img.shields.io/badge/objective%20C-256513.svg?style=for-the-badge&logo=brainfuck&logoColor=white)
+\
 ![IDE](featuresDemo/demo images/IDE.PNG)
 ![Languages](featuresDemo/demo images/languageslist.png)
 
