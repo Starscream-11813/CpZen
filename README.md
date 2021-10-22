@@ -138,4 +138,4 @@ We were inspired by similar projects like:
 * [OnlineGDB IDE](https://www.onlinegdb.com/)
 
 
-![test](featuresDemo/demo images/algorithms1.PNG)
+![test](featuresDemo/demo images/algorithms1.png)
