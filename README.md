@@ -50,7 +50,7 @@ python run.py
 
 ## Features:
 ### Landing Page (pre-Login):
-![Landing Page](featuresDemo/demo images/Landing page.PNG)
+![Landing Page](/featuresDemo/demo images/Landing page.PNG)
 
 ### Login/Signup:
 Users can create a new account or login to an already existing account. If they forget their password, then a "Reset Password" link will be sent to their email.
