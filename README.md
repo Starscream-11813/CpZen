@@ -47,3 +47,91 @@ pip install -r requirements.txt
 python run.py
 ```
 * Step-4: The application will be up and running on ```http://127.0.0.1:5000/```
+
+## Features:
+### Landing Page (pre-Login):
+![Landing Page](featuresDemo/Landing page.PNG)
+
+### Login/Signup:
+Users can create a new account or login to an already existing account. If they forget their password, then a "Reset Password" link will be sent to their email.
+![Login](featuresDemo/Login.PNG)
+![Signup](featuresDemo/Signup.PNG)
+![Reset Password](featuresDemo/resetpassword.PNG)
+
+### Landing Page (post-Login):
+Text editor area with Syntax Highlighting, Auto-Indentation, Auto-Brackets Matching, Auto-Brackets Highlighting and Line Highlighting. Supports a total of 20 programming languages.
+![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
+![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
+![Clojure](https://img.shields.io/badge/Clojure-%23Clojure.svg?style=for-the-badge&logo=Clojure&logoColor=Clojure)
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
+![Haskell](https://img.shields.io/badge/Haskell-5e5086?style=for-the-badge&logo=haskell&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Kotlin](https://img.shields.io/badge/kotlin-%230095D5.svg?style=for-the-badge&logo=kotlin&logoColor=white)
+![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
+![Perl](https://img.shields.io/badge/perl-%2339457E.svg?style=for-the-badge&logo=perl&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)
+![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
+![Scala](https://img.shields.io/badge/scala-%23DC322F.svg?style=for-the-badge&logo=scala&logoColor=white)
+![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![Brainf**k](https://img.shields.io/badge/brain%20f**k-%13131011.svg?style=for-the-badge&logo=brainfuck&logoColor=white)
+![Objective-C](https://img.shields.io/badge/objective%20C-256513.svg?style=for-the-badge&logo=brainfuck&logoColor=white)
+![IDE](featuresDemo/IDE.PNG)
+![Languages](featuresDemo/languageslist.png)
+
+### Compile/Run Code:
+Users can click on Compile(Alt+C) to compile their code and on Run(Alt+R) to run their code. The source code, Standard Input and Standard Output (along with Build Log, Time taken and Memory usage) will be shown.
+![Run](featuresDemo/runSourceCode.PNG)
+![StdIO](featuresDemo/StdIO.PNG)
+
+### Save Codes:
+Users can save their code by clicking on Save(Alt+S) after providing a name for the file. They can click on "Copy" to copy the contents to clipboard or on "Download" to download the file to the local machine.
+![SaveName](featuresDemo/savecode1.PNG)
+![SaveCodes](featuresDemo/savecode2.PNG)
+
+### Save Templates:
+Ditto.
+![SaveTemplates](featuresDemo/savetemplates.PNG)
+
+### Upcoming Contests:
+Users can view a list of upcoming contests on 12 of the most popular online judges. The contests are categorized based on topics and difficulty levels and each list consists of the Contest Title, Contest Link, Start Time, End Time and Duration.
+![Upcoming1](featuresDemo/upcoming1.PNG)
+![Upcoming2](featuresDemo/upcoming2.PNG)
+![Upcoming3](featuresDemo/upcoming3.PNG)
+![Upcoming4](featuresDemo/upcoming4.PNG)
+![Upcoming5](featuresDemo/upcoming5.PNG)
+![Upcoming6](featuresDemo/upcoming6.PNG)
+
+### Profile Statistics:
+Users can view profile stats from 5 of the most popular online judges after selecting one of them and providing a judge handle/username. Stats include Contest Rating Line-graph, Submission Verdicts Doughnut-graph, Submission Activity Heatmap/Matrix-chart and list of Unsolved problems for up-solving.
+![ProfileStatistics1](featuresDemo/profilestats1.PNG)
+![ProfileStatistics2](featuresDemo/profilestats2.PNG)
+![ProfileStatistics3](featuresDemo/profilestats3.PNG)
+![ProfileStatistics4](featuresDemo/profilestats4.PNG)
+![ProfileStatistics5](featuresDemo/profilestats5.PNG)
+
+### Algorithms:
+Users can keep track of the algorithms they learn throughout their competitive programming journey by saving any good resources/problems pertaining to an algorithm they can find along with their subjective proficiency in the algorithm. They can choose to update any entry if they come across any new resource/problem or if they feel their proficiency in the algorithm has improved. They can also delete any algorithm entry. Users can have a slght idea about the algorithmic topics they have/don't have a grasp over by viewing the Proficiency Radar-chart and practise accordingly.
+![Algorithms1](featuresDemo/algorithms1.PNG)
+![Algorithms2](featuresDemo/algorithms2.PNG)
+![Algorithms3](featuresDemo/algorithms3.PNG)
+![Algorithms4](featuresDemo/algorithms4.PNG)
+![Algorithms5](featuresDemo/algorithms5.PNG)
+![Algorithms6](featuresDemo/algorithms6.PNG)
+
+## Resources:
+### Tutorials:
+* [Chart.js Tutorial](https://www.youtube.com/watch?v=NySBh_DIRlg)
+* [Highlight.js Tutorial](https://www.youtube.com/watch?v=y-0jqM9EeVM)
+* [Flask Tutorial](https://www.youtube.com/watch?v=dam0GPOAvVI)
+
+### Inspirations:
+We were inspired by similar projects like:
+* [StopStalk](https://www.stopstalk.com/)
+* [Codeforces Visualizer](https://cfviz.netlify.app/)
+* [clist.by](https://clist.by/)
+* [OnlineGDB IDE](https://www.onlinegdb.com/)
