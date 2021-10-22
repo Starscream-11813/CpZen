@@ -229,8 +229,8 @@ def run():
     print(temp_run_code)
 
     if cust_input:
-        data['input'] = cust_input
-        temp_input = data['input']
+        data['stdin'] = cust_input
+        temp_input = data['stdin']
 
     print(temp_input)
 
