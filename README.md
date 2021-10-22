@@ -50,13 +50,13 @@ python run.py
 
 ## Features:
 ### Landing Page (pre-Login):
-![Landing Page](featuresDemo/demo images/Landing page.PNG)
+![Landing Page](featuresDemo/demo%20images/Landing page.PNG)
 
 ### Login/Signup:
 Users can create a new account or login to an already existing account. If they forget their password, then a "Reset Password" link will be sent to their email.
-![Login](featuresDemo/demo images/Login.PNG)
-![Signup](featuresDemo/demo images/Signup.PNG)
-![Reset Password](featuresDemo/demo images/resetpassword.PNG)
+![Login](featuresDemo/demo%20images/Login.PNG)
+![Signup](featuresDemo/demo%20images/Signup.PNG)
+![Reset Password](featuresDemo/demo%20images/resetpassword.PNG)
 
 ### Landing Page (post-Login):
 Text editor area with Syntax Highlighting, Auto-Indentation, Auto-Brackets Matching, Auto-Brackets Highlighting and Line Highlighting. Supports a total of 20 programming languages.\
@@ -81,48 +81,48 @@ Text editor area with Syntax Highlighting, Auto-Indentation, Auto-Brackets Match
 ![Brainf**k](https://img.shields.io/badge/brain%20f**k-%13131011.svg?style=for-the-badge&logo=brainfuck&logoColor=white)
 ![Objective-C](https://img.shields.io/badge/objective%20C-256513.svg?style=for-the-badge&logo=brainfuck&logoColor=white)
 \
-![IDE](featuresDemo/demo images/IDE.PNG)
-![Languages](featuresDemo/demo images/languageslist.png)
+![IDE](featuresDemo/demo%20images/IDE.PNG)
+![Languages](featuresDemo/demo%20images/languageslist.png)
 
 ### Compile/Run Code:
 Users can click on Compile(Alt+C) to compile their code and on Run(Alt+R) to run their code. The source code, Standard Input and Standard Output (along with Build Log, Time taken and Memory usage) will be shown.
-![Run](featuresDemo/demo images/runSourceCode.PNG)
-![StdIO](featuresDemo/demo images/StdIO.PNG)
+![Run](featuresDemo/demo%20images/runSourceCode.PNG)
+![StdIO](featuresDemo/demo%20images/StdIO.PNG)
 
 ### Save Codes:
 Users can save their code by clicking on Save(Alt+S) after providing a name for the file. They can click on "Copy" to copy the contents to clipboard or on "Download" to download the file to the local machine.
-![SaveName](featuresDemo/demo images/savecode1.PNG)
-![SaveCodes](featuresDemo/demo images/savecode2.PNG)
+![SaveName](featuresDemo/demo%20images/savecode1.PNG)
+![SaveCodes](featuresDemo/demo%20images/savecode2.PNG)
 
 ### Save Templates:
 Ditto.
-![SaveTemplates](featuresDemo/demo images/savetemplates.PNG)
+![SaveTemplates](featuresDemo/demo%20images/savetemplates.PNG)
 
 ### Upcoming Contests:
 Users can view a list of upcoming contests on 12 of the most popular online judges. The contests are categorized based on topics and difficulty levels and each list consists of the Contest Title, Contest Link, Start Time, End Time and Duration.
-![Upcoming1](featuresDemo/demo images/upcoming1.PNG)
-![Upcoming2](featuresDemo/demo images/upcoming2.PNG)
-![Upcoming3](featuresDemo/demo images/upcoming3.PNG)
-![Upcoming4](featuresDemo/demo images/upcoming4.PNG)
-![Upcoming5](featuresDemo/demo images/upcoming5.PNG)
-![Upcoming6](featuresDemo/demo images/upcoming6.PNG)
+![Upcoming1](featuresDemo/demo%20images/upcoming1.PNG)
+![Upcoming2](featuresDemo/demo%20images/upcoming2.PNG)
+![Upcoming3](featuresDemo/demo%20images/upcoming3.PNG)
+![Upcoming4](featuresDemo/demo%20images/upcoming4.PNG)
+![Upcoming5](featuresDemo/demo%20images/upcoming5.PNG)
+![Upcoming6](featuresDemo/demo%20images/upcoming6.PNG)
 
 ### Profile Statistics:
 Users can view profile stats from 5 of the most popular online judges after selecting one of them and providing a judge handle/username. Stats include Contest Rating Line-graph, Submission Verdicts Doughnut-graph, Submission Activity Heatmap/Matrix-chart and list of Unsolved problems for up-solving.
-![ProfileStatistics1](featuresDemo/demo images/profilestats1.PNG)
-![ProfileStatistics2](featuresDemo/demo images/profilestats2.PNG)
-![ProfileStatistics3](featuresDemo/demo images/profilestats3.PNG)
-![ProfileStatistics4](featuresDemo/demo images/profilestats4.PNG)
-![ProfileStatistics5](featuresDemo/demo images/profilestats5.PNG)
+![ProfileStatistics1](featuresDemo/demo%20images/profilestats1.PNG)
+![ProfileStatistics2](featuresDemo/demo%20images/profilestats2.PNG)
+![ProfileStatistics3](featuresDemo/demo%20images/profilestats3.PNG)
+![ProfileStatistics4](featuresDemo/demo%20images/profilestats4.PNG)
+![ProfileStatistics5](featuresDemo/demo%20images/profilestats5.PNG)
 
 ### Algorithms:
 Users can keep track of the algorithms they learn throughout their competitive programming journey by saving any good resources/problems pertaining to an algorithm they can find along with their subjective proficiency in the algorithm. They can choose to update any entry if they come across any new resource/problem or if they feel their proficiency in the algorithm has improved. They can also delete any algorithm entry. Users can have a slght idea about the algorithmic topics they have/don't have a grasp over by viewing the Proficiency Radar-chart and practise accordingly.
-![Algorithms1](featuresDemo/demo images/algorithms1.PNG)
-![Algorithms2](featuresDemo/demo images/algorithms2.PNG)
-![Algorithms3](featuresDemo/demo images/algorithms3.PNG)
-![Algorithms4](featuresDemo/demo images/algorithms4.PNG)
-![Algorithms5](featuresDemo/demo images/algorithms5.PNG)
-![Algorithms6](featuresDemo/demo images/algorithms6.PNG)
+![Algorithms1](featuresDemo/demo%20images/algorithms1.PNG)
+![Algorithms2](featuresDemo/demo%20images/algorithms2.PNG)
+![Algorithms3](featuresDemo/demo%20images/algorithms3.PNG)
+![Algorithms4](featuresDemo/demo%20images/algorithms4.PNG)
+![Algorithms5](featuresDemo/demo%20images/algorithms5.PNG)
+![Algorithms6](featuresDemo/demo%20images/algorithms6.PNG)
 
 ## Resources:
 ### Tutorials:
@@ -136,6 +136,3 @@ We were inspired by similar projects like:
 * [Codeforces Visualizer](https://cfviz.netlify.app/)
 * [clist.by](https://clist.by/)
 * [OnlineGDB IDE](https://www.onlinegdb.com/)
-
-
-![test](featuresDemo/demo%20images/algorithms1.PNG)
