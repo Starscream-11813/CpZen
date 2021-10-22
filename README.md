@@ -136,3 +136,6 @@ We were inspired by similar projects like:
 * [Codeforces Visualizer](https://cfviz.netlify.app/)
 * [clist.by](https://clist.by/)
 * [OnlineGDB IDE](https://www.onlinegdb.com/)
+
+
+![test]/(featuresDemo/demo images/algorithms1.PNG)
