@@ -116,7 +116,7 @@ Users can view profile stats from 5 of the most popular online judges after sele
 ![ProfileStatistics5](featuresDemo/demo%20images/profilestats5.PNG)
 
 ### Algorithms:
-Users can keep track of the algorithms they learn throughout their competitive programming journey by saving any good resources/problems pertaining to an algorithm they can find along with their subjective proficiency in the algorithm. They can choose to update any entry if they come across any new resource/problem or if they feel their proficiency in the algorithm has improved. They can also delete any algorithm entry. Users can have a slght idea about the algorithmic topics they have/don't have a grasp over by viewing the Proficiency Radar-chart and practise accordingly.
+Users can keep track of the algorithms they learn throughout their competitive programming journey by saving any good resources/problems pertaining to an algorithm they can find along with their subjective proficiency in the algorithm. They can choose to update any entry if they come across any new resource/problem or if they feel their proficiency in the algorithm has improved. They can also delete any algorithm entry. Users can have a slight idea about the algorithmic topics they have/don't have a grasp over by viewing the Proficiency Radar-chart and practise accordingly.
 ![Algorithms1](featuresDemo/demo%20images/algorithms1.PNG)
 ![Algorithms2](featuresDemo/demo%20images/algorithms2.PNG)
 ![Algorithms3](featuresDemo/demo%20images/algorithms3.PNG)
