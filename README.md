@@ -4,7 +4,7 @@ CpZen is an Online Integrated Development Environment (IDE) for competitive prog
 ![Build](https://img.shields.io/badge/build-passing-lightgreen.svg)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-orange.svg)
-![Grade](https://img.shields.io/badge/Grade-Not%20Yet%20Graded-lightgrey)
+![Grade](https://img.shields.io/badge/Grade-A%2B-lightgrey)
 
 ## Built With:
 ### Frameworks and Dependencies: 
